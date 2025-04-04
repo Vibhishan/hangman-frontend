@@ -2,13 +2,15 @@ import React from "react";
 
 export default function Word({ actualWord, playedLetters }) {
   return (
-    <div>
+    <div className="display-flex justify-around word-flex">
       {[...actualWord].map((letter, index) => (
         <React.Fragment key={index}>
           {playedLetters.has(letter) ? (
-            <span key={index}>{letter}</span>
+            <div key={index} className="word">
+              {letter}
+            </div>
           ) : (
-            <span>&nbsp;_&nbsp;</span>
+            <div className="word">&nbsp;_&nbsp;</div>
           )}
         </React.Fragment>
       ))}

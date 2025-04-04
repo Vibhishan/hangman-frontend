@@ -1,0 +1,39 @@
+.start-button {
+    font-family: 'Mochiy Pop P One', sans-serif;
+    background: $gray-light;
+    padding: 1rem 2.5rem;
+    display: inline-grid;
+    place-items: center;
+    color: $light-color;
+    border-radius: 15px;
+    border: 2px solid $gray-dark;
+    position: relative;
+    // to bring stuff behind, how to do without z-index
+    transform-style: preserve-3d;
+    transition: transform 150ms ease-in-out, background 150ms ease-in-out;
+    cursor: pointer;
+    
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: repeating-linear-gradient(to right, transparent, transparent 5px, $gray-dark 5px, $gray-dark 10px), $gray;
+      border: 2px solid $gray-dark;
+      border-radius: 15px;
+      // to bring stuff behind, how to do without z-index
+      transform: translate3d(0, 1.5rem, -2rem);
+      box-shadow: 0px 15px 4px -2px rgba($gray, 0.25);
+      transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
+    }
+    
+    &:active, &:hover {
+      transform: translate(0, 0.5rem);
+      background: darker($gray-light, 10%);
+      
+      &::before {
+        transform: translate3d(0, 1rem, -2rem);
+        box-shadow: 0px 10px 4px -2px rgba($gray, 0.25);
+      }
+    }
+  }

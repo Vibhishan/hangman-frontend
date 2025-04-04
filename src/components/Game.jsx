@@ -19,9 +19,10 @@ export default function Game() {
 
   const lives = MAX_LIVES - wrongLetters.length;
 
-  const isRunning = Boolean(lives > 0 && actualWord.length > 0);
+  const isRunning = actualWord;
   const isWon =
     isRunning &&
+    lives &&
     [...wordSet].reduce((acc, letter) => {
       if (!playedSet.has(letter)) return false;
       return acc;
@@ -38,16 +39,20 @@ export default function Game() {
   };
 
   return (
-    <div>
+    <div className="game-wrapper">
       {isRunning && (
         <>
-          <Lives livesLeft={lives} />
-          <Word actualWord={actualWord} playedLetters={playedSet} />
-          <Letters playedLetters={playedSet} onSelect={guess} />
+          <div className="left-pane">
+            <Lives livesLeft={lives} />
+          </div>
+          <div className="right-pane">
+            <Word actualWord={actualWord} playedLetters={playedSet} />
+            <Letters playedLetters={playedSet} onSelect={guess} />
+          </div>
         </>
       )}
 
-      <Start onStart={start} />
+      <Start onStart={start} isRunning={isRunning} />
 
       {isWon && (
         <div>
