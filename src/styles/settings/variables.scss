@@ -1,4 +1,13 @@
-$light-color: #fafafa;
-$gray-dark: #0A0A0A;
-$gray: #141515;
-$gray-light: #1E1F1F;
+/* --- Variables --- */
+$dark-color: #001219;
+$light-color: #fffefb;
+$primary-font: "Montserrat", sans-serif;
+
+// --- Responsive Units ---
+// Assuming 1rem = 16px base font size
+$base-padding: 1rem; // Was 15px -> approx 1rem
+$navbar-height: 3.75rem; // Was 60px
+$footer-height: 3.125rem; // Was 50px
+$base-font-size: 1rem; // Base font size for body (usually 16px)
+$responsive-breakpoint: 48rem; // Was 768px
+$controls-max-width: 18.75rem; // Was 300px

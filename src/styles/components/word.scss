@@ -1,4 +1,12 @@
 .word {
-    font-size: 2rem;
-    font-family: "Mochiy Pop P One", sans-serif;
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.word-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5rem;
 }

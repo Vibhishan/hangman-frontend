@@ -8,12 +8,22 @@
 }
 
 .left-pane {
-  width: 30%;
+  width: 35%;
   height: 100vh;
-  display: flex;
-  align-items: flex-end;
+  box-sizing: border-box;
+  display: flex; // Use flex to control children vertically
+  flex-direction: column; // Stack hangman visual and lives text
+  justify-content: center; // Push content apart (visual top, text bottom)
+  align-items: center; // Center content horizontally
+  border-right: 2px solid darken($light-color, 5%); // Keep 2px border
 }
 
 .right-pane {
-  width: 70%;
+  width: 65%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  // Example alignment for Word/Letters:
+  justify-content: center;
+  align-items: center;
 }

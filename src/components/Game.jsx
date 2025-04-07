@@ -9,11 +9,20 @@ const MAX_LIVES = 6;
 
 export default function Game() {
   const [session, setSession] = useState(null);
+  const [playedLetters, setPlayedLetters] = useState(new Set());
   const isRunning = !!session;
 
   const guess = async (letter) => {
     const updatedSession = await playInSession(session.id, letter);
     setSession(updatedSession);
+
+    if (playedLetters.has(letter)) {
+      return;
+    }
+
+    const updatedPlayedLetters = new Set(playedLetters);
+    updatedPlayedLetters.add(letter);
+    setPlayedLetters(updatedPlayedLetters);
   };
 
   const start = async (name) => {
@@ -30,7 +39,7 @@ export default function Game() {
           </div>
           <div className="right-pane">
             <Word maskedWord={session.maskedWord} />
-            <Letters playedLetters={new Set()} onSelect={guess} />
+            <Letters playedLetters={playedLetters} onSelect={guess} />
           </div>
         </>
       )}

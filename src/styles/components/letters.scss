@@ -1,48 +1,54 @@
-.letter-button {
-  font-family: "Mochiy Pop P One", sans-serif;
-  background: $gray-light;
-  padding: 1rem 2.5rem;
-  display: inline-grid;
-  place-items: center;
-  color: $light-color;
-  border-radius: 15px;
-  border: 2px solid $gray-dark;
-  position: relative;
-  // to bring stuff behind, how to do without z-index
-  transform-style: preserve-3d;
-  transition: transform 150ms ease-in-out, background 150ms ease-in-out;
-  cursor: pointer;
+/* --- Variables --- */
+$dark-color: #001219;
+$light-color: #fffefb;
+$primary-font: "Montserrat", sans-serif;
 
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: repeating-linear-gradient(
-        to right,
-        transparent,
-        transparent 5px,
-        $gray-dark 5px,
-        $gray-dark 10px
-      ),
-      $gray;
-    border: 2px solid $gray-dark;
-    border-radius: 15px;
-    // to bring stuff behind, how to do without z-index
-    transform: translate3d(0, 1.5rem, -2rem);
-    box-shadow: 0px 15px 4px -2px rgba($gray, 0.25);
-    transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
+$letter-button-size: 3.5rem;
+
+.letter-button {
+  font-family: $primary-font;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $letter-button-size;
+  height: $letter-button-size;
+  font-size: 1.2rem; // Use rem
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-style: normal;
+  box-sizing: border-box;
+
+  color: $dark-color;
+  background-color: transparent;
+  border: 2px solid $dark-color; // Keep px border
+  border-radius: 6px; // Keep px radius
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: $dark-color;
+    color: $light-color;
   }
 
-  &:active,
-  &:hover {
-    transform: translate(0, 0.5rem);
-    background: darker($gray-light, 10%);
+  &:focus {
+    outline: 2px solid dodgerblue; // Keep px outline
+    outline-offset: 2px; // Keep px offset
+  }
 
-    &::before {
-      transform: translate3d(0, 1rem, -2rem);
-      box-shadow: 0px 10px 4px -2px rgba($gray, 0.25);
-    }
+  // --- DISABLED STATE STYLES ---
+  &:disabled {
+    opacity: 0.4; // Reduce opacity (adjust 0.0 to 1.0 as desired)
+    cursor: not-allowed; // Change cursor to indicate it's disabled
+    // Optional: Reset hover/active effects explicitly if needed,
+    // but :not(:disabled) on the hover/active rules is cleaner.
+    // background-color: transparent; // Ensure background doesn't stay filled
+    // color: $dark-color;          // Ensure text color doesn't stay white
+  }
+
+  &:active {
+    transform: translateY(1px); // Keep px transform
   }
 
   &--letters {

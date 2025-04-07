@@ -1,12 +1,12 @@
 @import "settings/reset.scss";
 @import "settings/variables.scss";
 @import "layouts/container.scss";
-@import "components/start.scss";
 @import "components/hangman.scss";
 @import "components/letters.scss";
 @import "components/word.scss";
 @import "components/lives.scss";
-
+@import "components/start-page.scss";
+@import "components/hangman-svg.scss";
 
 .display-none {
   display: none;

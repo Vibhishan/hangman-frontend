@@ -1,0 +1,246 @@
+// --- Balloon Color Variables (Choose your desired colors) ---
+$balloon-color-1: #ffadad; // Light Red/Pink
+$balloon-color-2: #ffd6a5; // Light Orange
+$balloon-color-3: #fdffb6; // Light Yellow
+$balloon-color-4: #caffbf; // Light Green
+$balloon-color-5: #9bf6ff; // Light Cyan/Blue
+$balloon-color-6: #bdb2ff; // Light Purple
+
+.hangman-container {
+  width: 100%; // Use full width of left-pane
+  max-width: 450px; // Max width to prevent visual getting too large
+  flex-grow: 1; // Allow it to take available vertical space
+  position: relative; // ESSENTIAL for absolute positioning inside
+  margin-bottom: $base-padding; // Space above the lives text
+}
+
+.floating-man {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  max-width: 275px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+}
+
+.floating-man svg {
+  position: absolute;
+  height: auto;
+}
+
+.head {
+  width: 30%;
+  top: 15%;
+  left: 55%;
+  z-index: 10;
+}
+
+.body {
+  width: 45%;
+  top: 40%;
+  left: 40%;
+  z-index: 5;
+}
+
+.arm-left {
+  width: 48%;
+  top: 41%;
+  left: -3%;
+  z-index: 6;
+}
+
+.arm-right {
+  width: 20%;
+  top: 47%;
+  left: 85%;
+  z-index: 6;
+}
+
+.leg-left {
+  width: 16%;
+  top: 86%;
+  left: 40%;
+  z-index: 4;
+}
+
+.leg-right {
+  width: 16%;
+  top: 88%;
+  left: 58%;
+  z-index: 4;
+}
+
+.balloons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  z-index: 20;
+
+  animation: floatBalloonClusterAnimation 2.5s ease-in-out infinite alternate;
+}
+
+.balloon-1,
+.balloon-2,
+.balloon-3,
+.balloon-4,
+.balloon-5,
+.balloon-6 {
+  position: absolute;
+  width: 70px;
+  height: 200px;
+}
+.balloon-1 {
+  top: 33%;
+  left: -2%;
+
+  .balloon-shape path {
+    fill: $balloon-color-1;
+  }
+}
+.balloon-2 {
+  top: 32%;
+  left: 5%;
+
+  .balloon-shape path {
+    fill: $balloon-color-2;
+  }
+}
+.balloon-3 {
+  top: 30%;
+  left: 13%;
+
+  .balloon-shape path {
+    fill: $balloon-color-3;
+  }
+}
+.balloon-4 {
+  top: 30%;
+  left: 20%;
+
+  .balloon-shape path {
+    fill: $balloon-color-4;
+  }
+}
+.balloon-5 {
+  top: 30%;
+  left: 28%;
+
+  .balloon-shape path {
+    fill: $balloon-color-5;
+  }
+}
+.balloon-6 {
+  top: 31%;
+  left: 37%;
+
+  .balloon-shape path {
+    fill: $balloon-color-6;
+  }
+}
+
+.balloons svg {
+  position: absolute;
+}
+
+.balloon-shape {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.balloon-string {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 60%;
+  width: auto;
+}
+
+.balloon-1 .balloon-string {
+  left: 100%;
+  bottom: 0%;
+  height: 55%;
+}
+.balloon-2 .balloon-string {
+  left: 75%;
+  bottom: 0%;
+  height: 55%;
+}
+.balloon-3 .balloon-string {
+  left: 50%;
+  bottom: 0%;
+  height: 55%;
+}
+.balloon-4 .balloon-string {
+  left: 30%;
+  bottom: 0%;
+  height: 55%;
+}
+.balloon-5 .balloon-string {
+  left: 0%;
+  bottom: 0%;
+  height: 55%;
+}
+.balloon-6 .balloon-string {
+  left: -25%;
+  bottom: 0%;
+  height: 55%;
+}
+
+.floating-man {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 275px;
+  height: 55%;
+  max-height: calc(275px * 4 / 3);
+  z-index: 1;
+
+  /* --- ADD ANIMATION HERE --- */
+  animation: floatManAnimation 2s ease-in-out infinite alternate;
+}
+
+/* --- KEYFRAMES DEFINITIONS --- */
+
+@keyframes floatManAnimation {
+  /* Start and End State (Handled by 'alternate') */
+  from {
+    /* Keep existing horizontal centering, add initial vertical position */
+    transform: translate(-50%, 0px);
+  }
+  /* Mid-point State */
+  to {
+    /* Keep horizontal centering, move slightly up */
+    transform: translate(-50%, -10px); /* Adjust -12px for more/less float */
+  }
+}
+
+/* --- Optional: Animation for Individual Balloons --- */
+/* Example Keyframes */
+@keyframes floatBalloonAnimation {
+  from {
+    /* Start position - can add slight rotation */
+    transform: translateY(0px) rotate(-1deg);
+  }
+  to {
+    /* End position - move up slightly, rotate other way */
+    transform: translateY(-8px) rotate(1deg); /* Adjust px and deg */
+  }
+}
+
+/* --- NEW: Keyframes for the whole balloon cluster --- */
+@keyframes floatBalloonClusterAnimation {
+  from {
+    /* Start at the original position */
+    transform: translateY(0px) rotate(0.5deg); /* Add slight initial tilt */
+  }
+  to {
+    /* Move cluster up slightly, tilt other way */
+    transform: translateY(-9px) rotate(-0.5deg); /* Adjust px and deg */
+  }
+}

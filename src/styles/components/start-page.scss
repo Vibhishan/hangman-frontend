@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: $primary-font;
+  font-size: $base-font-size;
+  background-color: $light-color;
+  color: $dark-color;
+  line-height: 1.5;
+}
+
+.start-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.start-navbar {
+  flex-shrink: 0;
+  height: $navbar-height;
+  padding: 0 $base-padding * 1.5; // Adjusted padding slightly
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid darken($light-color, 5%); // Keep 1px border
+  box-shadow: 0 2px 4px rgba($dark-color, 0.05); // Keep px shadow
+
+  .navbar-title {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: 1.4rem; // Use rem for consistency
+  }
+
+  .developer-title {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 300;
+    font-size: 1.4rem; // Use rem for consistency
+  }
+
+  .repo-button {
+    font-family: "IBM Plex Mono", monospace;
+    display: inline-block;
+    font-size: 1rem; // Use rem for consistency
+    padding: 0.5em 1em; // Use em for padding relative to font size
+    background-color: $dark-color;
+    color: $light-color;
+    border: none;
+    border-radius: 6px; // Keep px radius
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: lighten($dark-color, 20%);
+    }
+  }
+}
+
+.start-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.main-left-pane,
+.main-right-pane {
+  padding: $base-padding * 1.5; // Use rem-based padding
+  flex: 1;
+}
+
+.main-left-pane {
+  border-right: 1px solid darken($light-color, 10%); // Keep 1px border
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  p {
+    font-size: 1rem; // Explicitly set paragraph font size if needed
+    margin-bottom: $base-padding; // Add spacing below paragraphs
+    font-weight: 400;
+  }
+}
+
+.main-right-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-footer {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  flex-shrink: 0;
+  height: $footer-height; // Use rem-based height
+  color: $dark-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9rem; // Use rem
+  padding: 0 $base-padding; // Use rem-based padding
+  border-top: 1px solid darken($light-color, 10%); // Keep 2px border
+
+  .footer-link {
+    color: lighten($dark-color, 40%);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 0.4em; // Keep em relative to footer font size
+
+    &:hover {
+      text-decoration: underline;
+      color: $dark-color;
+    }
+  }
+}
+
+.input {
+  font-family: $primary-font;
+  font-size: 1.1rem;
+  padding: 0.6em 0.8em;
+  margin-bottom: $base-padding;
+  border: 2px solid darken($light-color, 5%);
+  border-radius: 6px;
+  width: 30%;
+
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $dark-color;
+    box-shadow: 0 0 5px rgba($dark-color, 0.2);
+  }
+}
+
+.start-button {
+  font-family: $primary-font;
+  display: inline-block;
+  padding: 0.75em 2em; // Keep em for padding relative to element font-size
+  font-size: 1.2rem; // Use rem
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-style: normal;
+  width: 30%;
+  box-sizing: border-box;
+
+  color: $dark-color;
+  background-color: transparent;
+  border: 2px solid $dark-color; // Keep px border
+  border-radius: 6px; // Keep px radius
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: $dark-color;
+    color: $light-color;
+  }
+
+  &:focus {
+    outline: 2px solid dodgerblue; // Keep px outline
+    outline-offset: 2px; // Keep px offset
+  }
+  &:active {
+    transform: translateY(1px); // Keep px transform
+  }
+}
